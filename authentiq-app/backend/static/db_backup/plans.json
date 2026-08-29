@@ -1,0 +1,86 @@
+[
+  {
+    "id": "free_trial",
+    "name": "Free Trial",
+    "description": "14-Day Free Trial for validation testing.",
+    "active": true,
+    "limits": {
+      "max_brands": 1,
+      "max_products": 1,
+      "max_batches": 1,
+      "max_scans_per_month": 250,
+      "max_users": 1
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-06-23T10:16:22.574000"
+    },
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a3a5cf687993f8238c04bc4"
+    }
+  },
+  {
+    "id": "business",
+    "name": "Business",
+    "description": "For growing brands protecting packaging lines.",
+    "active": true,
+    "limits": {
+      "max_brands": 1,
+      "max_products": 25,
+      "max_batches": 50,
+      "max_scans_per_month": 100000,
+      "max_users": 5
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-06-23T10:16:22.575000"
+    },
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a3a5cf687993f8238c04bc6"
+    }
+  },
+  {
+    "id": "business_pro",
+    "name": "Business Pro",
+    "description": "Full supply chain protection and API channels.",
+    "active": true,
+    "limits": {
+      "max_brands": 5,
+      "max_products": 500,
+      "max_batches": 1000,
+      "max_scans_per_month": -1,
+      "max_users": 50
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-06-23T10:16:22.576000"
+    },
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a3a5cf687993f8238c04bc8"
+    }
+  },
+  {
+    "id": "enterprise",
+    "name": "Enterprise",
+    "description": "Custom SLA, white-label, and SSO configuration.",
+    "active": true,
+    "limits": {
+      "max_brands": -1,
+      "max_products": -1,
+      "max_batches": -1,
+      "max_scans_per_month": -1,
+      "max_users": -1
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-06-23T10:16:22.577000"
+    },
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a3a5cf687993f8238c04bca"
+    }
+  }
+]

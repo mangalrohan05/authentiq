@@ -1,0 +1,21 @@
+[
+  {
+    "vendor_id": "vendor_demo_001",
+    "feature_key": "sso",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a3a6f9b529b9aed0b3d09bb"
+    },
+    "override_value": "true",
+    "granted_by": "admin@authentiq.com",
+    "reason": "dsds",
+    "updated_at": {
+      "__type__": "datetime",
+      "value": "2026-06-23T11:35:55.310000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-06-23T11:35:55.310000"
+    }
+  }
+]

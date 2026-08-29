@@ -1,0 +1,101 @@
+
+> frontend@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.2 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.1.62:3000
+✓ Ready in 785ms
+
+ GET / 200 in 524ms (next.js: 314ms, application-code: 211ms)
+ GET / 200 in 89ms (next.js: 15ms, application-code: 74ms)
+[browser] Image with src "http://localhost:3000/vercel.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio. (file://D:/Kshitiz/QR Authentication/authentiq-app/frontend/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:1294:21)
+ GET /vendor 200 in 100ms (next.js: 37ms, application-code: 63ms)
+ GET /undefined/product/list 404 in 88ms (next.js: 43ms, application-code: 45ms)
+[browser] Error: Failed to fetch products
+    at VendorDashboard.useEffect.fetchProducts (file://D:/Kshitiz/QR Authentication/authentiq-app/frontend/.next/dev/static/chunks/src_0qle28m._.js:563:44)
+ GET /vendor 200 in 563ms (next.js: 244ms, application-code: 319ms)
+ GET /undefined/product/list 404 in 158ms (next.js: 22ms, application-code: 136ms)
+[browser] Error: Failed to fetch products
+    at VendorDashboard.useEffect.fetchProducts (file://D:/Kshitiz/QR Authentication/authentiq-app/frontend/.next/dev/static/chunks/src_0qle28m._.js:563:44)
+ GET /admin 200 in 594ms (next.js: 404ms, application-code: 190ms)
+ GET /vendor 200 in 87ms (next.js: 12ms, application-code: 75ms)
+ GET /undefined/product/list 404 in 74ms (next.js: 11ms, application-code: 64ms)
+[browser] Error: Failed to fetch products
+    at VendorDashboard.useEffect.fetchProducts (file://D:/Kshitiz/QR Authentication/authentiq-app/frontend/.next/dev/static/chunks/src_0qle28m._.js:563:44)
+ POST /undefined/product/create 404 in 66ms (next.js: 8ms, application-code: 58ms)
+ GET /admin 200 in 46ms (next.js: 4ms, application-code: 43ms)
+ GET /verify/p2 200 in 2.7s (next.js: 2.6s, application-code: 87ms)
+ GET /verify/undefined/scan/p2 404 in 83ms (next.js: 16ms, application-code: 67ms)
+ GET / 200 in 809ms (next.js: 272ms, application-code: 537ms)
+ GET / 200 in 162ms (next.js: 23ms, application-code: 139ms)
+[browser] Image with src "http://localhost:3000/vercel.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio. (file://D:/Kshitiz/QR Authentication/authentiq-app/frontend/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:1294:21)
+ GET /vendor 200 in 110ms (next.js: 18ms, application-code: 93ms)
+ GET /undefined/product/list 404 in 547ms (next.js: 344ms, application-code: 204ms)
+[browser] Error: Failed to fetch products
+    at VendorDashboard.useEffect.fetchProducts (file://D:/Kshitiz/QR Authentication/authentiq-app/frontend/.next/dev/static/chunks/src_0qle28m._.js:563:44)
+ GET / 200 in 155ms (next.js: 33ms, application-code: 122ms)
+ GET / 200 in 55ms (next.js: 6ms, application-code: 49ms)
+[browser] Image with src "http://localhost:3000/vercel.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio. (file://D:/Kshitiz/QR Authentication/authentiq-app/frontend/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:1294:21)
+ GET / 200 in 472ms (next.js: 156ms, application-code: 316ms)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en" className="geist_a715...">
+                          <body
++                           className="min-h-full flex flex-col"
+-                           className="min-h-full flex flex-col antigravity-scroll-lock"
+                          >
+                  ...
+ 
+    at <unknown> (file://D:/Kshitiz/QR Authentication/authentiq-app/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file://D:/Kshitiz/QR Authentication/authentiq-app/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file://D:/Kshitiz/QR Authentication/authentiq-app/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file://D:/Kshitiz/QR Authentication/authentiq-app/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file://D:/Kshitiz/QR Authentication/authentiq-app/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file://D:/Kshitiz/QR Authentication/authentiq-app/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file://D:/Kshitiz/QR Authentication/authentiq-app/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file://D:/Kshitiz/QR Authentication/authentiq-app/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file://D:/Kshitiz/QR Authentication/authentiq-app/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file://D:/Kshitiz/QR Authentication/authentiq-app/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://D:/Kshitiz/QR Authentication/authentiq-app/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://D:/Kshitiz/QR Authentication/authentiq-app/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file://D:/Kshitiz/QR Authentication/authentiq-app/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+[browser] Image with src "http://localhost:3000/vercel.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio. (file://D:/Kshitiz/QR Authentication/authentiq-app/frontend/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2431:13)
+ GET / 200 in 934ms (next.js: 147ms, application-code: 786ms)
+[browser] Image with src "http://localhost:3000/vercel.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio. (file://D:/Kshitiz/QR Authentication/authentiq-app/frontend/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2431:13)
+ GET / 200 in 234ms (next.js: 28ms, application-code: 206ms)
+[browser] Image with src "http://localhost:3000/vercel.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio. (file://D:/Kshitiz/QR Authentication/authentiq-app/frontend/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2431:13)
+✓ Finished writing to filesystem cache in 10.3s
+ GET / 200 in 227ms (next.js: 23ms, application-code: 204ms)
+[browser] Image with src "http://localhost:3000/vercel.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio. (file://D:/Kshitiz/QR Authentication/authentiq-app/frontend/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2431:13)
+ GET / 200 in 129ms (next.js: 20ms, application-code: 109ms)
+[browser] Image with src "http://localhost:3000/vercel.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio. (file://D:/Kshitiz/QR Authentication/authentiq-app/frontend/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2431:13)
+[?25h
+
+D:\Kshitiz\QR Authentication\authentiq-app\frontend>

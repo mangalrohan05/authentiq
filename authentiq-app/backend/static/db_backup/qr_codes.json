@@ -1,0 +1,402 @@
+[
+  {
+    "qr_id": "test123",
+    "batch_id": "batch_001",
+    "scan_count": 1,
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2024-04-09T00:00:00"
+    },
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a0c07fa5d1245d866163903"
+    }
+  },
+  {
+    "qr_id": "3b72cea4-b638-426b-8d68-10fb75ed0e45",
+    "batch_id": "batch_106d0e93",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-05-19T06:56:00.187000"
+    },
+    "scan_count": 2,
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a0c09805d1245d86616390d"
+    }
+  },
+  {
+    "qr_id": "581c3dcd-783c-4c23-aaf8-001f9916af23",
+    "batch_id": "batch_93577172",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-05-22T11:49:43.428000"
+    },
+    "scan_count": 0,
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a1042d767798aaee433728c"
+    }
+  },
+  {
+    "qr_id": "04622047-bdbb-4246-95ef-f21b0b5d7329",
+    "batch_id": "a9ffb636-cd5e-4fa2-a5e0-f94fe2eeb935",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-05-22T12:07:09.503000"
+    },
+    "scan_count": 0,
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a1046ed67798aaee4337293"
+    }
+  },
+  {
+    "qr_id": "8634ec9c-84f8-416e-bc9b-0080d37ecade",
+    "batch_id": "batch_8be84eda",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-05-23T07:08:34.122000"
+    },
+    "scan_count": 0,
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a115272dc3c6e9d269df6b2"
+    }
+  },
+  {
+    "qr_id": "4fe3f562-1a7b-455f-80c3-a7a60bc38411",
+    "batch_id": "batch_eee71966",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-05-23T08:53:20.941000"
+    },
+    "scan_count": 0,
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a116b00aa0c0ba617459be5"
+    }
+  },
+  {
+    "qr_id": "3f1a0b43-a66b-4b42-9950-be949fc2dae9",
+    "batch_id": "batch_5163b392",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-05-23T09:43:47.263000"
+    },
+    "scan_count": 1,
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a1176d35f414f43c01dc335"
+    }
+  },
+  {
+    "qr_id": "5ca96352-b2ac-4397-9115-5bef31464a2d",
+    "batch_id": "batch_7be2f098",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-05-23T09:45:38.096000"
+    },
+    "scan_count": 0,
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a1177425f414f43c01dc337"
+    }
+  },
+  {
+    "qr_id": "2c7fd912-5b4b-4143-857f-e307c42f85a9",
+    "batch_id": "batch_fc5bb4d3",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-05-23T10:34:27.069000"
+    },
+    "scan_count": 17,
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a1182b333d500051b7f8fdb"
+    }
+  },
+  {
+    "qr_id": "00592277-8fa7-4b1d-b529-a15494bbb0ab",
+    "batch_id": "014fc589-8e0c-4b75-a947-43c56309e5b2",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-05-27T11:04:08.572000"
+    },
+    "scan_count": 0,
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a16cfa8dff8e25686e755da"
+    }
+  },
+  {
+    "qr_id": "777ef52f-b497-409a-80d4-7795c8251c5f",
+    "batch_id": "batch_6e7a3671",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-05-28T07:55:15.417000"
+    },
+    "scan_count": 0,
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a17f4e3355abeb0f169d258"
+    }
+  },
+  {
+    "qr_id": "1eeb36ac-6485-429c-a332-6b0157a3af5d",
+    "batch_id": "batch_daca97ce",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-05-30T06:53:54.673000"
+    },
+    "scan_count": 12,
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a1a89825cdf638b42cb1093"
+    }
+  },
+  {
+    "qr_id": "test_qr_55b72c8f",
+    "batch_id": "0daf015e-b854-47f4-a052-a3a56f21cfe0",
+    "status": "active",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a1aa9eca0af3a48cbc85503"
+    },
+    "scan_count": 1
+  },
+  {
+    "qr_id": "d93924f4-79e6-45b5-841b-cf981d0180f0",
+    "product_id": "82743ff0-c49d-4f80-a2bb-9f4f8abd5b37",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-06-15T06:10:02.202000"
+    },
+    "scan_count": 1,
+    "expires_at": {
+      "__type__": "datetime",
+      "value": "2027-06-15T06:10:02.202000"
+    },
+    "status": "active",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a2f973ae0ba3a31c08758fc"
+    }
+  },
+  {
+    "qr_id": "451e4a60-ab37-4e75-b7f0-81099b66f16f",
+    "product_id": "6b9d209a-12f1-4efc-bb91-60947885628e",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-06-15T06:49:20.714000"
+    },
+    "scan_count": 30,
+    "expires_at": {
+      "__type__": "datetime",
+      "value": "2027-06-15T06:49:20.714000"
+    },
+    "status": "active",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a2fa070e0ba3a31c0875900"
+    }
+  },
+  {
+    "qr_id": "f2152fca-992f-4e0c-bca3-a54a0a7eb7b0",
+    "product_id": "da413a19-4432-419a-807e-cef7c6ceb478",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-06-16T09:56:04.219000"
+    },
+    "scan_count": 1,
+    "expires_at": {
+      "__type__": "datetime",
+      "value": "2027-06-16T09:56:04.219000"
+    },
+    "status": "active",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a311db484dc9fddbef28a47"
+    }
+  },
+  {
+    "qr_id": "7dbe6364-9974-4b03-9d86-e3f1ff87a309",
+    "product_id": "8b0c7f59-345d-4b94-902c-8260d6b04d54",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-06-23T11:08:49.078000"
+    },
+    "scan_count": 0,
+    "expires_at": {
+      "__type__": "datetime",
+      "value": "2027-06-23T11:08:49.078000"
+    },
+    "status": "active",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a3a69410db36a2185156424"
+    }
+  },
+  {
+    "qr_id": "390931cf-7d40-44da-b076-d4f73be90c07",
+    "product_id": "b8132f92-8648-4825-8b92-913638bd3cfc",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-06-24T10:17:28.639000"
+    },
+    "scan_count": 0,
+    "expires_at": {
+      "__type__": "datetime",
+      "value": "2027-06-24T10:17:28.639000"
+    },
+    "status": "active",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a3baeb85e15c698eb6aa009"
+    }
+  },
+  {
+    "qr_id": "66fe5ac5-6398-433a-af11-0562741799a9",
+    "product_id": "7d1e8a38-78b3-4c9c-9978-2172f28460ad",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-06-24T10:52:52.019000"
+    },
+    "scan_count": 1,
+    "expires_at": {
+      "__type__": "datetime",
+      "value": "2027-06-24T10:52:52.019000"
+    },
+    "status": "active",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a3bb7045e15c698eb6aa00e"
+    }
+  },
+  {
+    "qr_id": "fced9363-cf02-4844-85b4-a495fb4a3481",
+    "product_id": "6c21ebf1-9526-4cc3-aba8-4d4509c8c5ee",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-07-25T05:02:07.542000"
+    },
+    "scan_count": 12,
+    "expires_at": {
+      "__type__": "datetime",
+      "value": "2027-07-25T05:02:07.542000"
+    },
+    "status": "active",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a64434fe3ae8e82c2069a0b"
+    }
+  },
+  {
+    "qr_id": "358e9a84-0acc-4a0f-aaaf-7be8c5f8cf0a",
+    "product_id": "3d05f2e0-9f1d-4668-86a4-fbbb0cc283b6",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-07-25T05:42:39.451000"
+    },
+    "scan_count": 10,
+    "expires_at": {
+      "__type__": "datetime",
+      "value": "2027-07-25T05:42:39.451000"
+    },
+    "status": "active",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a644ccf1dc1f3256f892964"
+    }
+  },
+  {
+    "qr_id": "79854cd1-0e5d-4859-906d-ec042d6c003b",
+    "product_id": "bfd72588-214b-4697-9c32-e7172492ea20",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-07-25T06:33:57.663000"
+    },
+    "scan_count": 10,
+    "expires_at": {
+      "__type__": "datetime",
+      "value": "2027-07-25T06:33:57.663000"
+    },
+    "status": "active",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a6458d52091beffd4080989"
+    }
+  },
+  {
+    "qr_id": "3c2ea925-ea57-4006-bce5-96a05e600456",
+    "product_id": "f8564b8a-e7ee-4deb-9226-95bff8441b3f",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-07-29T08:50:11.469000"
+    },
+    "scan_count": 4,
+    "expires_at": {
+      "__type__": "datetime",
+      "value": "2027-07-29T08:50:11.469000"
+    },
+    "status": "active",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a69bec32b0a280d6ffa987d"
+    }
+  },
+  {
+    "qr_id": "3e200b08-9b48-4fcb-aedb-e936e7d1bfff",
+    "product_id": "d1d933fe-4530-419a-98b5-6f24b6d9c7e0",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-07-29T09:04:38.912000"
+    },
+    "scan_count": 2,
+    "expires_at": {
+      "__type__": "datetime",
+      "value": "2027-07-29T09:04:38.912000"
+    },
+    "status": "active",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a69c226e9744115e1f25481"
+    }
+  },
+  {
+    "qr_id": "daa639a8-edb4-4b08-b8c9-bb79c2db133a",
+    "product_id": "fc1e0a06-b495-42eb-8429-1dd719f1a778",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-07-29T09:19:30.909000"
+    },
+    "scan_count": 2,
+    "expires_at": {
+      "__type__": "datetime",
+      "value": "2027-07-29T09:19:30.909000"
+    },
+    "status": "active",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a69c5a254e4806e75b05eb2"
+    }
+  },
+  {
+    "qr_id": "e9777e95-4119-4517-a0e5-63a13102e242",
+    "product_id": "20fa801c-dee5-4da6-ae83-ee5876c49a6d",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-07-29T12:32:52.719000"
+    },
+    "scan_count": 2,
+    "expires_at": {
+      "__type__": "datetime",
+      "value": "2027-07-29T12:32:52.719000"
+    },
+    "status": "active",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a69f2f4557572f8302c6eac"
+    }
+  }
+]

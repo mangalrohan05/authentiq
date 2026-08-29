@@ -1,0 +1,34 @@
+# Local environment settings
+.env
+.env.local
+.env.development
+.env.staging
+.env.production
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Python Cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Machine Learning weights (downloaded dynamically)
+*.pt
+yolov8*.pt
+
+# Uploads directory
+static/uploads/*
+!static/uploads/.gitkeep
+
+# Credential/PII runtime backup — never commit real password hashes or user PII
+# (audit 2.1). Demo users are seeded at runtime; see users.json.example for format.
+static/db_backup/users.json
+
+# Coverage / test artifacts
+coverage.xml
+.coverage
+htmlcov/

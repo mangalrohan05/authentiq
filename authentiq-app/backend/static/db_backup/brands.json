@@ -1,0 +1,74 @@
+[
+  {
+    "id": "0d358940-2d3a-4ff2-acd0-7d7e0f8efbc0",
+    "vendor_id": "a77673a3-4a4f-4bb0-b59d-c3f2b60ad44f",
+    "brand_name": "sffv wf",
+    "brand_display_name": "cdsf",
+    "brand_logo_url": "/static/brand_logos/a77673a3-4a4f-4bb0-b59d-c3f2b60ad44f/0d358940-2d3a-4ff2-acd0-7d7e0f8efbc0/logo_e179c5e7-95e6-412a-a8a1-b733deb54fc4.png",
+    "brand_tagline": "dfsfadq",
+    "product_categories": [
+      "Namkeen"
+    ],
+    "status": "active",
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-06-08T07:33:27.614000"
+    },
+    "updated_at": {
+      "__type__": "datetime",
+      "value": "2026-06-16T09:54:32.887000"
+    },
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a26704787c04105509a899a"
+    }
+  },
+  {
+    "id": "22422bf3-d3f6-402e-94ba-73a870d8a4ab",
+    "vendor_id": "a77673a3-4a4f-4bb0-b59d-c3f2b60ad44f",
+    "brand_name": "bikaji",
+    "brand_display_name": "bikaji",
+    "brand_logo_url": null,
+    "brand_tagline": null,
+    "product_categories": [
+      "Namkeen"
+    ],
+    "status": "active",
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-06-15T06:11:19.514000"
+    },
+    "updated_at": {
+      "__type__": "datetime",
+      "value": "2026-06-15T06:11:19.514000"
+    },
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a2f9787e0ba3a31c08758fe"
+    }
+  },
+  {
+    "id": "9b0f0c27-312b-4cae-9da9-0a07b6d890b1",
+    "vendor_id": "vendor_demo_001",
+    "brand_name": "Bikaji",
+    "brand_display_name": "Bikaji",
+    "brand_logo_url": "/static/brand_logos/vendor_demo_001/9b0f0c27-312b-4cae-9da9-0a07b6d890b1/logo_aaddc3ce-a3a3-4c80-9994-5cfb9f5cf44f.jpg",
+    "brand_tagline": null,
+    "product_categories": [
+      "Namkeen"
+    ],
+    "status": "active",
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-07-25T04:55:05.960000"
+    },
+    "updated_at": {
+      "__type__": "datetime",
+      "value": "2026-07-25T04:55:05.976000"
+    },
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a6441a9e3ae8e82c2069a06"
+    }
+  }
+]

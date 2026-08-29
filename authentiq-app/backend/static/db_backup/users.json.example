@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Authentiq Admin",
+    "email": "admin@authentiq.com",
+    "password_hash": "<GENERATED AT RUNTIME — never commit a real bcrypt hash. See _ensure_demo_users() in app/core/db.py>",
+    "role": "admin",
+    "vendor_id": null,
+    "created_at": {"__type__": "datetime", "value": "2024-01-01T00:00:00"}
+  },
+  {
+    "name": "Demo Vendor",
+    "email": "vendor@authentiq.com",
+    "password_hash": "<GENERATED AT RUNTIME>",
+    "role": "vendor",
+    "vendor_id": "vendor_demo_001",
+    "created_at": {"__type__": "datetime", "value": "2024-01-01T00:00:00"}
+  }
+]

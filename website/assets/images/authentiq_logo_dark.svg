@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 240 60" width="240" height="60">
+  <!-- Scanner Corners -->
+  <path d="M6 14V6h8M6 34v8h8M34 14V6H26M34 34v8H26" stroke="#00b074" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Magnifying Glass with Checkmark -->
+  <circle cx="20" cy="24" r="7" stroke="#00b074" stroke-width="2.5"/>
+  <path d="M25 29l4.5 4.5" stroke="#00b074" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M17.5 24l2 2 4-4" stroke="#00b074" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Brand Text -->
+  <text x="48" y="32" font-family="'Inter', sans-serif" font-size="28" font-weight="700" fill="#003057">Authent<tspan fill="#00b074">iq</tspan></text>
+  <!-- Tagline -->
+  <text x="48" y="48" font-family="'Inter', sans-serif" font-size="9.5" font-weight="700" fill="#00b074" letter-spacing="0.2em">SCAN • VERIFY • TRUST</text>
+</svg>

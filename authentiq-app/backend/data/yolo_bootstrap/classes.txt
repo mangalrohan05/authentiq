@@ -1,0 +1,9 @@
+logo
+label
+serial
+hologram
+qr
+packaging
+seal
+text
+security_mark

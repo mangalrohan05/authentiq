@@ -1,0 +1,100 @@
+[
+  {
+    "id": "vendor_demo_001",
+    "vendor_name": "Luxe & Co.",
+    "company_name": "Luxe & Co. International Ltd.",
+    "assigned_plan": "business_pro",
+    "subscription_status": "active",
+    "legal_company_name": "Luxe & Co. International Ltd.",
+    "company_type": "Pvt Ltd",
+    "gstin": "27AACCP1234A1Z5",
+    "pan": "AACCP1234A",
+    "cin": "U74999MH2021PTC357123",
+    "reg_address_line1": "101, Luxury Plaza, Bandra West",
+    "reg_address_line2": "Near Taj Lands End",
+    "reg_city": "Mumbai",
+    "reg_state": "Maharashtra",
+    "reg_pin": "400050",
+    "reg_country": "India",
+    "industry_sector": "Electronics",
+    "company_website": "https://luxeandco.com",
+    "contact_full_name": "Demo Vendor",
+    "contact_work_email": "vendor@authentiq.com",
+    "contact_mobile": "+919876543210",
+    "contact_designation": "Operations Director",
+    "tm_status": "Registered",
+    "tm_number": "TM-9876543",
+    "tm_app_file": "tm_application_luxe.pdf",
+    "tm_cert_file": "tm_certificate_luxe.pdf",
+    "brand_auth_file": "brand_authorization_luxe.pdf",
+    "gst_cert_file": "gst_certificate_luxe.pdf",
+    "inc_doc_file": "certificate_of_incorporation_luxe.pdf",
+    "pharma_drug_license_file": "drug_license_luxe.pdf",
+    "fssai_license_file": "fssai_license_luxe.pdf",
+    "excise_license_file": "excise_license_luxe.pdf",
+    "gst_cert_status": "Verified",
+    "inc_doc_status": "Verified",
+    "pharma_drug_license_status": "Verified",
+    "fssai_license_status": "Verified",
+    "excise_license_status": "Verified",
+    "tm_app_status": "Verified",
+    "tm_cert_status": "Verified",
+    "brand_auth_status": "Verified",
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-05-19T06:49:30.716000"
+    },
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a266fa987c04105509a8999"
+    },
+    "plan_assigned_at": {
+      "__type__": "datetime",
+      "value": "2026-06-23T10:17:45.810000"
+    }
+  },
+  {
+    "id": "a77673a3-4a4f-4bb0-b59d-c3f2b60ad44f",
+    "vendor_name": "test 1",
+    "assigned_plan": "business_pro",
+    "subscription_status": "active",
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-05-19T06:54:43.312000"
+    },
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a0c09335d1245d866163909"
+    },
+    "plan_assigned_at": {
+      "__type__": "datetime",
+      "value": "2026-05-19T06:54:46.639000"
+    },
+    "plan_assigned_by": "admin@authentiq.com",
+    "plan_history": [
+      {
+        "plan_id": "free_trial",
+        "status": "active",
+        "changed_at": {
+          "__type__": "datetime",
+          "value": "2026-05-19T06:54:43.312000"
+        }
+      }
+    ],
+    "profile_image": "/static/vendor_logos/a77673a3-4a4f-4bb0-b59d-c3f2b60ad44f/332c855f-e01d-471c-ba90-5e24d28dc210.jpg",
+    "logo_url": "/static/vendor_logos/a77673a3-4a4f-4bb0-b59d-c3f2b60ad44f/332c855f-e01d-471c-ba90-5e24d28dc210.jpg",
+    "updated_at": {
+      "__type__": "datetime",
+      "value": "2026-05-30T05:44:49.006000"
+    },
+    "company_name": "test 1",
+    "brand_display_name": "test 1",
+    "business_email": "test@gmail.com",
+    "contact_number": "",
+    "website_url": "",
+    "business_address": "",
+    "country": "",
+    "tax_id": "",
+    "support_email": ""
+  }
+]

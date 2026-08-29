@@ -1,0 +1,74 @@
+[
+  {
+    "plan_slug": "free_trial",
+    "location": "none",
+    "csv_export": false,
+    "bulk_qr": false,
+    "telemetry": false,
+    "case_level": "basic",
+    "api_webhooks": false,
+    "sso": false,
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-07-29T12:28:43.013000"
+    },
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a69f1fb557572f8302c6ea3"
+    }
+  },
+  {
+    "plan_slug": "business",
+    "location": "region_level",
+    "csv_export": true,
+    "bulk_qr": false,
+    "telemetry": false,
+    "case_level": "full",
+    "api_webhooks": false,
+    "sso": false,
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-07-29T12:28:43.014000"
+    },
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a69f1fb557572f8302c6ea4"
+    }
+  },
+  {
+    "plan_slug": "business_pro",
+    "location": "full_heatmaps",
+    "csv_export": true,
+    "bulk_qr": true,
+    "telemetry": true,
+    "case_level": "full",
+    "api_webhooks": true,
+    "sso": false,
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-07-29T12:28:43.014000"
+    },
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a69f1fb557572f8302c6ea5"
+    }
+  },
+  {
+    "plan_slug": "enterprise",
+    "location": "full_heatmaps",
+    "csv_export": true,
+    "bulk_qr": true,
+    "telemetry": true,
+    "case_level": "full",
+    "api_webhooks": true,
+    "sso": true,
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-07-29T12:28:43.014000"
+    },
+    "_id": {
+      "__type__": "objectid",
+      "value": "6a69f1fb557572f8302c6ea6"
+    }
+  }
+]

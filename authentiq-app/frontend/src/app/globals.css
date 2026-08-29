@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #fbfcfc;
+  --foreground: #38434f;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  --font-sans: 'Manrope', system-ui, -apple-system, sans-serif;
+  --font-display: 'Sora', system-ui, -apple-system, sans-serif;
+  
+  --color-indigo-50: var(--color-emerald-50);
+  --color-indigo-100: var(--color-emerald-100);
+  --color-indigo-200: var(--color-emerald-200);
+  --color-indigo-300: var(--color-emerald-300);
+  --color-indigo-400: var(--color-emerald-400);
+  --color-indigo-500: var(--color-emerald-500);
+  --color-indigo-600: var(--color-emerald-600);
+  --color-indigo-700: var(--color-emerald-700);
+  --color-indigo-800: var(--color-emerald-800);
+  --color-indigo-900: var(--color-emerald-900);
+  --color-indigo-950: var(--color-emerald-950);
+
+  --color-violet-400: var(--color-teal-400);
+  --color-violet-500: var(--color-teal-500);
+
+  --color-slate-900: #0F2A43;
+
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0F2A43;
+    --foreground: #fbfcfc;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+.input-field {
+  width: 100% !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+  background-color: #ffffff !important;
+  border-width: 1px !important;
+  border-color: #e5e7eb !important;
+  border-radius: 0.75rem !important;
+  font-size: 0.875rem !important;
+  color: #000000 !important;
+  caret-color: #000000 !important;
+  outline: 2px solid transparent !important;
+  outline-offset: 2px !important;
+  transition-property: all !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition-duration: 150ms !important;
+}
+
+.input-field::placeholder {
+  color: #9ca3af !important;
+  opacity: 1 !important;
+}
+
+.input-field:focus {
+  border-color: transparent !important;
+  box-shadow: 0 0 0 2px #111827 !important;
+}
+
+.product-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.printer-icon {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 6px;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.printer-icon img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: block;
+}
+
+.product-wrapper span {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.new-product-page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  background: #f9fafb;
+}
+
+.product-form-container {
+  width: 100%;
+  max-width: 760px;
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  margin: 8px 0 32px;
+}
+
+.product-form-container h2 {
+  margin-bottom: 28px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.3;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+  color: #111827;
+  background: #ffffff;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #16B981;
+  box-shadow: 0 0 0 2px rgba(22, 185, 129, 0.15);
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.product-form-section {
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.product-form-section-title {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.product-form-section-hint {
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 14px;
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.cancel-btn,
+.create-btn {
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+.cancel-btn {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.cancel-btn:hover:not(:disabled) {
+  background: #d1d5db;
+}
+
+.create-btn {
+  background: #16B981;
+  color: white;
+}
+
+.create-btn:hover:not(:disabled) {
+  background: #059669;
+}
+
+.create-btn:disabled,
+.cancel-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================= */
+/* Two-page Add Product flow */
+/* ========================= */
+
+.product-page,
+.upload-page {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  min-height: 100vh;
+  background: #f9fafb;
+}
+
+.product-container,
+.upload-container {
+  width: 100%;
+  max-width: 900px;
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+}
+
+.product-container h2,
+.upload-container h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 28px;
+  color: #111827;
+}
+
+.button-area {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+}
+
+.next-btn {
+  background: #16B981;
+  color: white;
+  border: none;
+  padding: 13px 28px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.next-btn:hover {
+  background: #059669;
+}
+
+.upload-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.upload-box {
+  border: 2px dashed #d1d5db;
+  border-radius: 16px;
+  padding: 50px 20px;
+  text-align: center;
+  background: #fafafa;
+  transition: 0.3s;
+}
+
+.upload-box:hover {
+  border-color: #16B981;
+  background: #ecfdf5;
+}
+
+.upload-box h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #111827;
+}
+
+.upload-box p {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .upload-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Text Shine Animation */
+@keyframes text-shine {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-text-shine {
+  animation: text-shine 3s ease-in-out infinite alternate;
+  background-size: 200% auto;
+}

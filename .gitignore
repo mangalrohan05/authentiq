@@ -1,0 +1,43 @@
+# Flutter
+build/
+.dart_tool/
+.packages
+.flutter-plugins
+.flutter-plugins-dependencies
+.metadata
+generated_plugin_registrant.dart
+
+# Node/Frontend
+node_modules/
+dist/
+.next/
+coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ML weights (downloaded at runtime)
+*.pt
+yolov8*.pt
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+.env
+
+# IDE/System
+.idea/
+.vscode/
+.DS_Store
+*.swp
+*.swo
+
+# Project specific
+QR-Authentication-App-backup/
+authentiq-app.zip
+website_php.zip
