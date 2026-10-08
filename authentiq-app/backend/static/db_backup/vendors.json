@@ -96,5 +96,62 @@
     "country": "",
     "tax_id": "",
     "support_email": ""
+  },
+  {
+    "id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "vendor_name": "abc",
+    "company_name": "abc",
+    "assigned_plan": "free_trial",
+    "subscription_status": "active",
+    "verification_status": "verified",
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-09-14T13:13:12.069000"
+    },
+    "legal_company_name": "abc",
+    "company_type": "Proprietorship",
+    "gstin": "27AAAAA1111A1Z1",
+    "pan": "ABCDE1234F",
+    "cin": "1234",
+    "reg_address_line1": "xyz",
+    "reg_address_line2": null,
+    "reg_city": "Balotra",
+    "reg_state": "Rajasthan",
+    "reg_pin": "344024",
+    "reg_country": "India",
+    "industry_sector": "FMCG",
+    "company_website": null,
+    "contact_full_name": "abc",
+    "contact_work_email": "sanjaydhaker050@gmail.com",
+    "contact_mobile": "6376517182",
+    "contact_designation": "manager",
+    "gst_cert_file": "gst_certificate_abc.pdf",
+    "inc_doc_file": "incorporation_doc_abc.pdf",
+    "pharma_drug_license_file": null,
+    "fssai_license_file": "fssai_compliance_certificate.pdf",
+    "excise_license_file": null,
+    "gst_cert_status": "Verified",
+    "inc_doc_status": "Verified",
+    "pharma_drug_license_status": null,
+    "fssai_license_status": "Verified",
+    "excise_license_status": null,
+    "tm_app_status": null,
+    "tm_cert_status": null,
+    "brand_auth_status": null,
+    "extra_users": 0,
+    "extra_skus": 0,
+    "extra_brands": 0,
+    "total_users_limit": 1,
+    "total_skus_limit": 1,
+    "total_brands_limit": 1,
+    "owner_id": "6aa7f2e882566a7ccf4bbd9a",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6aa7f2e882566a7ccf4bbd9b"
+    },
+    "updated_at": {
+      "__type__": "datetime",
+      "value": "2026-09-14T13:16:01.137000"
+    }
   }
 ]

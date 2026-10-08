@@ -106,30 +106,13 @@ async def lifespan(app: FastAPI):
 
     preload_task = asyncio.create_task(_preload())
 
-    async def _keep_vlm_warm():
-        # Pin the VLM in memory so scans never pay the ~70s cold-start reload
-        # (Ollama unloads the model after idle). Warms immediately, then re-pins
-        # on an interval shorter than the unload timer. No-op for non-Ollama.
-        from app.services.qwen_vl_service import warm_up_model
-        from app.services import vlm_config as _vcfg
-        if not (_vcfg.VLM_ENABLED and _vcfg.VLM_KEEP_WARM_ENABLED):
-            return
-        loop = asyncio.get_event_loop()
-        while True:
-            ok = await loop.run_in_executor(None, warm_up_model)
-            if ok:
-                logger.info("[VLM] model warm/pinned (keep_alive=%s)", _vcfg.VLM_KEEP_ALIVE)
-            await asyncio.sleep(max(30, _vcfg.VLM_KEEP_WARM_INTERVAL_S))
 
-    warm_task = asyncio.create_task(_keep_vlm_warm())
     yield
     preload_task.cancel()
-    warm_task.cancel()
-    for _t in (preload_task, warm_task):
-        try:
-            await _t
-        except asyncio.CancelledError:
-            pass
+    try:
+        await preload_task
+    except asyncio.CancelledError:
+        pass
 
 
 app = FastAPI(title="Authentiq Backend", version="2.0.0", lifespan=lifespan)

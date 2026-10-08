@@ -398,5 +398,23 @@
       "__type__": "objectid",
       "value": "6a69f2f4557572f8302c6eac"
     }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-09-14T13:27:01.736000"
+    },
+    "scan_count": 28,
+    "expires_at": {
+      "__type__": "datetime",
+      "value": "2027-09-14T13:27:01.736000"
+    },
+    "status": "active",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6aa7f62582566a7ccf4bbda1"
+    }
   }
 ]

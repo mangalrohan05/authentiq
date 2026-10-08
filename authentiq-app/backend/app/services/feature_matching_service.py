@@ -23,11 +23,14 @@ RANSAC_THRESHOLD = float(os.getenv("AUTHENTIQ_RANSAC_THRESHOLD", "0.70"))
 _cv2 = None
 _superpoint_available = False
 _lightglue_available = False
+_deps_checked = False
 
 
 def _check_dependencies():
-    """Check which feature matching libraries are available."""
-    global _cv2, _superpoint_available, _lightglue_available
+    """Check which feature matching libraries are available (cached after first call)."""
+    global _cv2, _superpoint_available, _lightglue_available, _deps_checked
+    if _deps_checked:
+        return
     
     if _cv2 is None:
         try:
@@ -52,6 +55,8 @@ def _check_dependencies():
     except ImportError:
         _lightglue_available = False
         logger.debug("[FeatureMatching] LightGlue not available")
+    
+    _deps_checked = True
 
 
 def _bytes_to_bgr(image_bytes: bytes) -> Optional[np.ndarray]:

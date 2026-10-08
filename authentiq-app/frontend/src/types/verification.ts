@@ -26,10 +26,7 @@ export interface AiReport {
   // Rendered by dedicated child components; kept loose to avoid prop-type churn.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   per_image_results?: any[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  vlm_report?: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  vlm_result?: any;
+
   [key: string]: unknown;
 }
 

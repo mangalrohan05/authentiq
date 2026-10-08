@@ -58,9 +58,7 @@ def summarize_embeddings(reference_images: List[dict]) -> Dict[str, Any]:
     elif ready == 0:
         status = "pending"
     elif ready < total:
-        # At least one embedding ready — verification can proceed with available images.
-        # Images without embeddings are skipped during scoring.
-        status = "ready"
+        status = "partial"
     else:
         status = "ready"
 

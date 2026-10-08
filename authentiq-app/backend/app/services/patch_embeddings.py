@@ -91,23 +91,45 @@ def generate_patch_embeddings_from_bytes(
     return out
 
 
-def max_patch_similarity(
+def batch_cosine_matrix(vecs_a: List[List[float]], vecs_b: List[List[float]]) -> Any:
+    """Compute all pairwise cosine similarities in one matrix multiply."""
+    import numpy as np
+    A = np.array(vecs_a, dtype=np.float32)
+    B = np.array(vecs_b, dtype=np.float32)
+    # Normalize rows (add epsilon to avoid division by zero)
+    A = A / (np.linalg.norm(A, axis=1, keepdims=True) + 1e-8)
+    B = B / (np.linalg.norm(B, axis=1, keepdims=True) + 1e-8)
+    return A @ B.T  # Shape: (len_a, len_b)
+
+
+def structured_patch_similarity(
     customer_patches: List[Dict[str, Any]],
     reference_patches: List[Dict[str, Any]],
     cosine_fn,
 ) -> float:
+    """Match patches by region name, return weighted average."""
     if not customer_patches or not reference_patches:
         return 0.0
-    best = 0.0
+    
+    ref_by_region = {}
+    for rp in reference_patches:
+        region = rp.get("region", "unknown")
+        if rp.get("vector"):
+            ref_by_region.setdefault(region, []).append(rp["vector"])
+    
+    matched_scores = []
     for cp in customer_patches:
+        region = cp.get("region", "unknown")
         cv = cp.get("vector")
-        if not cv:
+        if not cv or region not in ref_by_region:
             continue
-        for rp in reference_patches:
-            rv = rp.get("vector")
-            if rv:
-                best = max(best, cosine_fn(cv, rv))
-    return float(best)
+        # Best match within same region
+        best = max(cosine_fn(cv, rv) for rv in ref_by_region[region])
+        matched_scores.append(best)
+    
+    if not matched_scores:
+        return 0.0
+    return float(sum(matched_scores) / len(matched_scores))
 
 
 def compute_patch_stats(
@@ -116,43 +138,23 @@ def compute_patch_stats(
     cosine_fn,
 ) -> Dict[str, Any]:
     """
-    Compute aggregate patch-level similarity statistics between a customer image
-    and reference image patches.
-
-    Returns avg, min, and max cosine similarity across all (customer × reference)
-    patch pair comparisons, plus a count of comparisons made.
-
-    The min score is particularly useful as a "weakest link" tamper signal:
-    a very low min alongside a high average suggests localized tampering,
-    e.g. an authentic label with a counterfeit hologram overlay.
-
-    Args:
-        customer_patches:   List of patch dicts with "vector" key.
-        reference_patches:  List of patch dicts with "vector" key.
-        cosine_fn:          Callable(vec_a, vec_b) -> float in [0, 1].
-
-    Returns:
-        {
-            "avg":   float,  — mean similarity across all patch pairs
-            "min":   float,  — minimum similarity (weakest link)
-            "max":   float,  — maximum similarity (best matching patch)
-            "count": int,    — number of patch pairs compared
-        }
-        Returns zeros dict if either patch list is empty.
+    Compute aggregate patch-level similarity statistics using batched matrix multiplication.
     """
     if not customer_patches or not reference_patches:
         return {"avg": 0.0, "min": 0.0, "max": 0.0, "count": 0}
 
-    all_sims: List[float] = []
-    for cp in customer_patches:
-        cv = cp.get("vector")
-        if not cv:
-            continue
-        for rp in reference_patches:
-            rv = rp.get("vector")
-            if rv:
-                all_sims.append(cosine_fn(cv, rv))
+    c_vecs = [p["vector"] for p in customer_patches if p.get("vector")]
+    r_vecs = [p["vector"] for p in reference_patches if p.get("vector")]
 
+    if not c_vecs or not r_vecs:
+        return {"avg": 0.0, "min": 0.0, "max": 0.0, "count": 0}
+
+    # Use batched cosine matrix computation
+    sim_matrix = batch_cosine_matrix(c_vecs, r_vecs)
+    
+    # Flatten to list of floats for stats
+    all_sims = sim_matrix.flatten().tolist()
+    
     if not all_sims:
         return {"avg": 0.0, "min": 0.0, "max": 0.0, "count": 0}
 

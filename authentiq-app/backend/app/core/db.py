@@ -476,7 +476,7 @@ def ensure_default_plans():
                 "location": "none",
                 "csv_export": False,
                 "bulk_qr": False,
-                "telemetry": False,
+                "telemetry": True,
                 "case_level": "basic",
                 "api_webhooks": False,
                 "sso": False,

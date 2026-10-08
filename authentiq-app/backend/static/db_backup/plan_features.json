@@ -4,17 +4,17 @@
     "location": "none",
     "csv_export": false,
     "bulk_qr": false,
-    "telemetry": false,
+    "telemetry": true,
     "case_level": "basic",
     "api_webhooks": false,
     "sso": false,
     "created_at": {
       "__type__": "datetime",
-      "value": "2026-07-29T12:28:43.013000"
+      "value": "2026-10-08T21:55:44.957000"
     },
     "_id": {
       "__type__": "objectid",
-      "value": "6a69f1fb557572f8302c6ea3"
+      "value": "6ac811605d6378bc4af10b61"
     }
   },
   {
@@ -28,11 +28,11 @@
     "sso": false,
     "created_at": {
       "__type__": "datetime",
-      "value": "2026-07-29T12:28:43.014000"
+      "value": "2026-10-08T21:55:44.959000"
     },
     "_id": {
       "__type__": "objectid",
-      "value": "6a69f1fb557572f8302c6ea4"
+      "value": "6ac811605d6378bc4af10b62"
     }
   },
   {
@@ -46,11 +46,11 @@
     "sso": false,
     "created_at": {
       "__type__": "datetime",
-      "value": "2026-07-29T12:28:43.014000"
+      "value": "2026-10-08T21:55:44.961000"
     },
     "_id": {
       "__type__": "objectid",
-      "value": "6a69f1fb557572f8302c6ea5"
+      "value": "6ac811605d6378bc4af10b63"
     }
   },
   {
@@ -64,11 +64,11 @@
     "sso": true,
     "created_at": {
       "__type__": "datetime",
-      "value": "2026-07-29T12:28:43.014000"
+      "value": "2026-10-08T21:55:44.963000"
     },
     "_id": {
       "__type__": "objectid",
-      "value": "6a69f1fb557572f8302c6ea6"
+      "value": "6ac811605d6378bc4af10b64"
     }
   }
 ]

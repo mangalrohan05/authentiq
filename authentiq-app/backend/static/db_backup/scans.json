@@ -5439,5 +5439,981 @@
       "__type__": "objectid",
       "value": "6a69f523557572f8302c6ebb"
     }
+  },
+  {
+    "event_type": "Product Added",
+    "product_name": "abc",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "location": "Local, System",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-09-14T13:26:25.705000"
+    },
+    "status": "success",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "user_email": "sanjaydhaker050@gmail.com",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6aa7f60182566a7ccf4bbda0"
+    }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "product_name": "abc",
+    "event_type": "Product Scanned",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "verification_status": "verified",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-09-14T13:28:05.777000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-09-14T13:28:05.777000"
+    },
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
+    "location": {
+      "city": "Local",
+      "state": "Development",
+      "country": "System",
+      "lat": null,
+      "lon": null
+    },
+    "is_suspicious": true,
+    "ai_verified": true,
+    "ai_score": 0.5,
+    "ai_status": "needs_review",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6aa7f66682566a7ccf4bbda7"
+    }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "product_name": "abc",
+    "event_type": "Product Scanned",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "verification_status": "verified",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-09-14T13:29:34.789000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-09-14T13:29:34.789000"
+    },
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
+    "location": {
+      "city": "Local",
+      "state": "Development",
+      "country": "System",
+      "lat": null,
+      "lon": null
+    },
+    "is_suspicious": true,
+    "ai_verified": true,
+    "ai_score": 0.5,
+    "ai_status": "needs_review",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6aa7f6bf82566a7ccf4bbdaa"
+    }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "product_name": "abc",
+    "event_type": "Product Scanned",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "verification_status": "verified",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-09-15T09:59:41.527000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-09-15T09:59:41.527000"
+    },
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
+    "location": {
+      "city": "Local",
+      "state": "Development",
+      "country": "System",
+      "lat": null,
+      "lon": null
+    },
+    "is_suspicious": true,
+    "ai_verified": true,
+    "ai_score": 0.5,
+    "ai_status": "needs_review",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6aa9170ee964004f90615c1e"
+    }
+  },
+  {
+    "event_type": "Product Added",
+    "product_name": "INT3 Test Product",
+    "product_id": "119ebf79-66d6-423b-8638-cfafdf952062",
+    "location": "Local, System",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-09-15T10:09:52.755000"
+    },
+    "status": "success",
+    "vendor_id": "vendor-int3-ff7c8c",
+    "user_email": "invited-manager@vendor-int3-ff7c8c.com",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6aa919702ddee40f0b3e3a24"
+    }
+  },
+  {
+    "event_type": "Product Added",
+    "product_name": "Valid Product 1",
+    "product_id": "bb1d986c-e68a-4bda-878d-a4b8ed4a0e94",
+    "location": "Local, System",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-09-15T10:13:58.936000"
+    },
+    "status": "success",
+    "vendor_id": "vendor-pm-254e3d",
+    "user_email": "admin@vendor-pm-254e3d.com",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6aa91a662ddee40f0b3e3a3f"
+    }
+  },
+  {
+    "event_type": "Product Deleted",
+    "product_name": "Valid Product 1",
+    "product_id": "bb1d986c-e68a-4bda-878d-a4b8ed4a0e94",
+    "location": "Local, System",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-09-15T10:13:59.746000"
+    },
+    "status": "success",
+    "vendor_id": "vendor-pm-254e3d",
+    "user_email": "admin@vendor-pm-254e3d.com",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6aa91a672ddee40f0b3e3a41"
+    }
+  },
+  {
+    "event_type": "Product Added",
+    "product_name": "Active Product for Image Tests",
+    "product_id": "2bfe6c25-1289-4015-a4a0-aedce8f23985",
+    "location": "Local, System",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-09-15T10:14:01.252000"
+    },
+    "status": "success",
+    "vendor_id": "vendor-pm-254e3d",
+    "user_email": "admin@vendor-pm-254e3d.com",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6aa91a692ddee40f0b3e3a45"
+    }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "product_name": "abc",
+    "event_type": "Product Scanned",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "verification_status": "verified",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-09-15T10:25:58.214000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-09-15T10:25:58.214000"
+    },
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
+    "location": {
+      "city": "Local",
+      "state": "Development",
+      "country": "System",
+      "lat": null,
+      "lon": null
+    },
+    "is_suspicious": true,
+    "ai_verified": true,
+    "ai_score": 0.5,
+    "ai_status": "needs_review",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6aa91d37f6035c0ccf890628"
+    }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "product_name": "abc",
+    "event_type": "Product Scanned",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "verification_status": "verified",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-09-15T10:30:37.113000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-09-15T10:30:37.113000"
+    },
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
+    "location": {
+      "city": "Local",
+      "state": "Development",
+      "country": "System",
+      "lat": null,
+      "lon": null
+    },
+    "is_suspicious": true,
+    "ai_verified": true,
+    "ai_score": 0.5,
+    "ai_status": "needs_review",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6aa91e4d72fc96d55ffa6ac0"
+    }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "product_name": "abc",
+    "event_type": "Product Scanned",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "verification_status": "verified",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-09-15T10:34:39.860000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-09-15T10:34:39.860000"
+    },
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
+    "location": {
+      "city": "Local",
+      "state": "Development",
+      "country": "System",
+      "lat": null,
+      "lon": null
+    },
+    "is_suspicious": true,
+    "ai_verified": true,
+    "ai_score": 0.5,
+    "ai_status": "needs_review",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6aa91f407adc66a5c160e517"
+    }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "product_name": "abc",
+    "event_type": "Product Scanned",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "verification_status": "verified",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-09-15T10:42:53.936000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-09-15T10:42:53.936000"
+    },
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
+    "location": {
+      "city": "Local",
+      "state": "Development",
+      "country": "System",
+      "lat": null,
+      "lon": null
+    },
+    "is_suspicious": true,
+    "ai_verified": true,
+    "ai_score": 0.5,
+    "ai_status": "needs_review",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6aa9212e096032e0a1caf6ed"
+    }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "product_name": "abc",
+    "event_type": "Product Scanned",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "verification_status": "verified",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-09-15T10:45:05.007000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-09-15T10:45:05.007000"
+    },
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
+    "location": {
+      "city": "Local",
+      "state": "Development",
+      "country": "System",
+      "lat": null,
+      "lon": null
+    },
+    "is_suspicious": true,
+    "ai_verified": true,
+    "ai_score": 0.5,
+    "ai_status": "needs_review",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6aa921b1be64566e6acb04e0"
+    }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "product_name": "abc",
+    "event_type": "Product Scanned",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "verification_status": "verified",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-09-15T10:49:21.686000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-09-15T10:49:21.686000"
+    },
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
+    "location": {
+      "city": "Local",
+      "state": "Development",
+      "country": "System",
+      "lat": null,
+      "lon": null
+    },
+    "is_suspicious": true,
+    "ai_verified": true,
+    "ai_score": 0.5,
+    "ai_status": "needs_review",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6aa922b2b8287b232cdfefe3"
+    }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "product_name": "abc",
+    "event_type": "Product Scanned",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "verification_status": "verified",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-09-15T11:15:21.808000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-09-15T11:15:21.808000"
+    },
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
+    "location": {
+      "city": "Local",
+      "state": "Development",
+      "country": "System",
+      "lat": null,
+      "lon": null
+    },
+    "is_suspicious": true,
+    "ai_verified": true,
+    "ai_score": 0.5,
+    "ai_status": "needs_review",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6aa928caa3317f701ca3f334"
+    }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "product_name": "abc",
+    "event_type": "Product Scanned",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "verification_status": "verified",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-10-08T17:43:09.605000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-10-08T17:43:09.605000"
+    },
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+    "location": {
+      "city": "Local",
+      "state": "Development",
+      "country": "System",
+      "lat": null,
+      "lon": null
+    },
+    "is_suspicious": true,
+    "ai_verified": true,
+    "ai_score": 0.766449654261593,
+    "ai_status": "needs_review",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6ac7d62e08efa4e7c83c169d"
+    }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "product_name": "abc",
+    "event_type": "Product Scanned",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "verification_status": "verified",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-10-08T17:47:31.633000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-10-08T17:47:31.633000"
+    },
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+    "location": {
+      "city": "Local",
+      "state": "Development",
+      "country": "System",
+      "lat": null,
+      "lon": null
+    },
+    "is_suspicious": true,
+    "ai_verified": true,
+    "ai_score": 0.6838820632732476,
+    "ai_status": "needs_review",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6ac7d73408efa4e7c83c16a0"
+    }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "product_name": "abc",
+    "event_type": "Product Scanned",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "verification_status": "verified",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-10-08T17:51:11.463000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-10-08T17:51:11.463000"
+    },
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+    "location": {
+      "city": "Local",
+      "state": "Development",
+      "country": "System",
+      "lat": null,
+      "lon": null
+    },
+    "is_suspicious": true,
+    "ai_verified": true,
+    "ai_score": 0.5610597102941289,
+    "ai_status": "suspicious",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6ac7d81008efa4e7c83c16a3"
+    }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "product_name": "abc",
+    "event_type": "Product Scanned",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "verification_status": "verified",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-10-08T17:58:05.145000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-10-08T17:58:05.145000"
+    },
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+    "location": {
+      "city": "Local",
+      "state": "Development",
+      "country": "System",
+      "lat": null,
+      "lon": null
+    },
+    "is_suspicious": false,
+    "ai_verified": true,
+    "ai_score": 0.96,
+    "ai_status": "authentic",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6ac7d9ae3de11533b033143c"
+    }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "product_name": "abc",
+    "event_type": "Product Scanned",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "verification_status": "verified",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-10-08T17:59:15.359000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-10-08T17:59:15.359000"
+    },
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+    "location": {
+      "city": "Local",
+      "state": "Development",
+      "country": "System",
+      "lat": null,
+      "lon": null
+    },
+    "is_suspicious": true,
+    "ai_verified": true,
+    "ai_score": 0.2900034011339369,
+    "ai_status": "suspicious",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6ac7d9f43de11533b033143f"
+    }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "product_name": "abc",
+    "event_type": "Product Scanned",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "verification_status": "verified",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-10-08T18:00:09.554000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-10-08T18:00:09.554000"
+    },
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+    "location": {
+      "city": "Local",
+      "state": "Development",
+      "country": "System",
+      "lat": null,
+      "lon": null
+    },
+    "is_suspicious": false,
+    "ai_verified": true,
+    "ai_score": 0.96,
+    "ai_status": "authentic",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6ac7da2a3de11533b0331442"
+    }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "product_name": "abc",
+    "event_type": "Product Scanned",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "verification_status": "verified",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-10-08T18:48:48.148000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-10-08T18:48:48.148000"
+    },
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+    "location": {
+      "city": "Local",
+      "state": "Development",
+      "country": "System",
+      "lat": null,
+      "lon": null
+    },
+    "is_suspicious": false,
+    "ai_verified": true,
+    "ai_score": 0.96,
+    "ai_status": "authentic",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6ac7e59146cb28f3915caa79"
+    }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "product_name": "abc",
+    "event_type": "Product Scanned",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "verification_status": "verified",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-10-08T18:52:41.835000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-10-08T18:52:41.835000"
+    },
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+    "location": {
+      "city": "Local",
+      "state": "Development",
+      "country": "System",
+      "lat": null,
+      "lon": null
+    },
+    "is_suspicious": false,
+    "ai_verified": true,
+    "ai_score": 0.96,
+    "ai_status": "authentic",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6ac7e67a46cb28f3915caa7c"
+    }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "product_name": "abc",
+    "event_type": "Product Scanned",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "verification_status": "verified",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-10-08T18:53:24.636000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-10-08T18:53:24.636000"
+    },
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+    "location": {
+      "city": "Local",
+      "state": "Development",
+      "country": "System",
+      "lat": null,
+      "lon": null
+    },
+    "is_suspicious": true,
+    "ai_verified": true,
+    "ai_score": 0.31504882558033326,
+    "ai_status": "suspicious",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6ac7e6a546cb28f3915caa7f"
+    }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "product_name": "abc",
+    "event_type": "Product Scanned",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "verification_status": "verified",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-10-08T19:08:47.665000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-10-08T19:08:47.665000"
+    },
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+    "location": {
+      "city": "Local",
+      "state": "Development",
+      "country": "System",
+      "lat": null,
+      "lon": null
+    },
+    "is_suspicious": false,
+    "ai_verified": true,
+    "ai_score": 0.9871597706155422,
+    "ai_status": "authentic",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6ac7ea4052db14f36e2b10a1"
+    }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "product_name": "abc",
+    "event_type": "Product Scanned",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "verification_status": "verified",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-10-08T19:44:45.092000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-10-08T19:44:45.092000"
+    },
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+    "location": {
+      "city": "Local",
+      "state": "Development",
+      "country": "System",
+      "lat": null,
+      "lon": null
+    },
+    "is_suspicious": false,
+    "ai_verified": true,
+    "ai_score": 0.9808823181540183,
+    "ai_status": "authentic",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6ac7f2aeb9f4103a9c881a52"
+    }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "product_name": "abc",
+    "event_type": "Product Scanned",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "verification_status": "verified",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-10-08T20:38:10.922000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-10-08T20:38:10.922000"
+    },
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+    "location": {
+      "city": "Local",
+      "state": "Development",
+      "country": "System",
+      "lat": null,
+      "lon": null
+    },
+    "is_suspicious": false,
+    "ai_verified": true,
+    "ai_score": 0.9808823181540183,
+    "ai_status": "authentic",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6ac7ff33a959457234e4d293"
+    }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "product_name": "abc",
+    "event_type": "Product Scanned",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "verification_status": "verified",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-10-08T20:39:18.686000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-10-08T20:39:18.686000"
+    },
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+    "location": {
+      "city": "Local",
+      "state": "Development",
+      "country": "System",
+      "lat": null,
+      "lon": null
+    },
+    "is_suspicious": false,
+    "ai_verified": true,
+    "ai_score": 0.96,
+    "ai_status": "authentic",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6ac7ff77a959457234e4d296"
+    }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "product_name": "abc",
+    "event_type": "Product Scanned",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "verification_status": "verified",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-10-08T21:20:20.073000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-10-08T21:20:20.073000"
+    },
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+    "location": {
+      "city": "Local",
+      "state": "Development",
+      "country": "System",
+      "lat": null,
+      "lon": null
+    },
+    "is_suspicious": false,
+    "ai_verified": true,
+    "ai_score": 0.9845316446671336,
+    "ai_status": "authentic",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6ac80915a959457234e4d299"
+    }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "product_name": "abc",
+    "event_type": "Product Scanned",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "verification_status": "verified",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-10-08T21:21:23.664000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-10-08T21:21:23.664000"
+    },
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+    "location": {
+      "city": "Local",
+      "state": "Development",
+      "country": "System",
+      "lat": null,
+      "lon": null
+    },
+    "is_suspicious": true,
+    "ai_verified": true,
+    "ai_score": 0.32806065084222885,
+    "ai_status": "suspicious",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6ac80954a959457234e4d29c"
+    }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "product_name": "abc",
+    "event_type": "Product Scanned",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "verification_status": "verified",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-10-08T22:08:09.637000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-10-08T22:08:09.637000"
+    },
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+    "location": {
+      "city": "Local",
+      "state": "Development",
+      "country": "System",
+      "lat": null,
+      "lon": null
+    },
+    "is_suspicious": false,
+    "ai_verified": true,
+    "ai_score": 0.9774732681825504,
+    "ai_status": "authentic",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6ac8144a5d6378bc4af10b67"
+    }
+  },
+  {
+    "qr_id": "bc8db2c6-39d6-4d25-a512-91c8f2db6b85",
+    "product_id": "d2772a6f-c306-447d-b0fa-1f1b99d96e8c",
+    "product_name": "abc",
+    "event_type": "Product Scanned",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "verification_status": "verified",
+    "timestamp": {
+      "__type__": "datetime",
+      "value": "2026-10-08T22:09:04.448000"
+    },
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-10-08T22:09:04.448000"
+    },
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+    "location": {
+      "city": "Local",
+      "state": "Development",
+      "country": "System",
+      "lat": null,
+      "lon": null
+    },
+    "is_suspicious": true,
+    "ai_verified": true,
+    "ai_score": 0.40011980375877565,
+    "ai_status": "suspicious",
+    "_id": {
+      "__type__": "objectid",
+      "value": "6ac814815d6378bc4af10b6a"
+    }
   }
 ]

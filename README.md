@@ -1,6 +1,6 @@
 # QR-Authentiq — Anti-Counterfeit Product Authentication Platform
 
-> **Scan. Verify. Trust.** — A full-stack QR code–based product authentication system powered by a multi-stage AI pipeline (OpenCLIP + YOLOv8 + Qwen2.5-VL) that detects counterfeit goods at consumer scan time.
+> **Scan. Verify. Trust.** — A full-stack QR code–based product authentication system powered by a multi-stage AI pipeline (DINOv2 + YOLOv8 + EasyOCR) that detects counterfeit goods at consumer scan time.
 
 ---
 
@@ -10,7 +10,7 @@
 |---|---|
 | [PROJECT_SCOPE.md](./docs/PROJECT_SCOPE.md) | Project purpose, business goals, and system architecture |
 | [TECH_STACK.md](./docs/TECH_STACK.md) | Full technology stack and dependency breakdown |
-| [AI_MODEL.md](./docs/AI_MODEL.md) | AI/ML pipeline — OpenCLIP, YOLOv8, Qwen2.5-VL, scoring |
+| [AI_MODEL.md](./docs/AI_MODEL.md) | AI/ML pipeline — DINOv2, YOLOv8, EasyOCR, scoring |
 | [PORTAL_GUIDE.md](./docs/PORTAL_GUIDE.md) | Admin & Vendor portal walkthroughs and feature map |
 | [INITIAL_SETUP.md](./docs/INITIAL_SETUP.md) | Installation, environment configuration, and first-run |
 | [QUICK_START.md](./docs/QUICK_START.md) | Commands to get up and running in minutes |

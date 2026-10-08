@@ -989,28 +989,40 @@ export default function ProductsTab({
                     AI Reference Images ({selectedProductDetail.reference_images?.length || 0})
                   </h4>
 
-                  {(embeddingsProcessing || embeddingStatus) && (
-                    <div className={`mb-3 rounded-lg border px-3 py-2 text-xs font-semibold ${embeddingStatus?.embeddings_status === 'ready'
-                      ? 'bg-emerald-55 bg-emerald-50 border-emerald-200 text-emerald-800'
-                      : embeddingsProcessing
-                        ? 'bg-amber-50 border-amber-200 text-amber-900'
-                        : 'bg-slate-50 border-slate-200 text-slate-700'
-                      }`}>
-                      {embeddingsProcessing && (
-                        <span className="inline-flex items-center gap-2">
-                          <span className="w-3 h-3 border-2 border-amber-500 border-t-transparent rounded-full animate-spin" />
-                          Generating AI embeddings…
-                        </span>
-                      )}
-                      {!embeddingsProcessing && embeddingStatus && (
-                        <span>
-                          Embeddings: {embeddingStatus.embeddings_status} —{' '}
-                          {embeddingStatus.embeddings_ready_count}/{embeddingStatus.embeddings_total_count} ready
-                          {embeddingStatus.embeddings_status === 'ready' && ' ✓'}
-                        </span>
-                      )}
-                    </div>
-                  )}
+                  {(() => {
+                    const statusObj = embeddingStatus || (
+                      (selectedProductDetail as any).embeddings_status ? {
+                        embeddings_status: (selectedProductDetail as any).embeddings_status,
+                        embeddings_ready_count: (selectedProductDetail as any).embeddings_ready_count,
+                        embeddings_total_count: (selectedProductDetail as any).embeddings_total_count
+                      } : null
+                    );
+
+                    if (!embeddingsProcessing && !statusObj) return null;
+
+                    return (
+                      <div className={`mb-3 rounded-lg border px-3 py-2 text-xs font-semibold ${statusObj?.embeddings_status === 'ready'
+                        ? 'bg-emerald-55 bg-emerald-50 border-emerald-200 text-emerald-800'
+                        : embeddingsProcessing
+                          ? 'bg-amber-50 border-amber-200 text-amber-900'
+                          : 'bg-slate-50 border-slate-200 text-slate-700'
+                        }`}>
+                        {embeddingsProcessing && (
+                          <span className="inline-flex items-center gap-2">
+                            <span className="w-3 h-3 border-2 border-amber-500 border-t-transparent rounded-full animate-spin" />
+                            Generating AI embeddings…
+                          </span>
+                        )}
+                        {!embeddingsProcessing && statusObj && (
+                          <span>
+                            Embeddings: {statusObj.embeddings_status} —{' '}
+                            {statusObj.embeddings_ready_count}/{statusObj.embeddings_total_count} ready
+                            {statusObj.embeddings_status === 'ready' && ' ✓'}
+                          </span>
+                        )}
+                      </div>
+                    );
+                  })()}
 
                   {(!selectedProductDetail.reference_images || selectedProductDetail.reference_images.length === 0) ? (
                     <div className="bg-slate-50 border rounded-xl p-8 text-center text-xs font-semibold text-gray-400">

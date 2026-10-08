@@ -26,11 +26,7 @@ import numpy as np
 from app.services.alignment_service import align_customer_to_reference, alignment_meta_for_api
 from app.services.embedding_compat import embedding_matches_model, normalize_view_type
 from app.services.image_paths import resolve_image_fs_path
-from app.services import vlm_config, vlm_decision
-from app.services.qwen_vl_service import (
-    verify_product_authenticity,
-    verify_product_authenticity_voting,
-)
+
 from app.services.pipeline_config import (
     ALIGN_MIN_INLIERS,
     ALIGN_ROI_MIN_FOR_ENSEMBLE,
@@ -60,7 +56,7 @@ from app.services.patch_embeddings import (
     PATCH_ENABLED_SLOTS,
     compute_patch_stats,
     generate_patch_embeddings_from_bytes,
-    max_patch_similarity,
+    structured_patch_similarity,
 )
 from app.services.region_embeddings import (
     EMBEDDING_STRATEGY_VERSION,
@@ -208,20 +204,16 @@ def filter_references_for_slot(
 
 
 def calibrate_similarity(sim: float) -> float:
-    """
-    Calibrate raw OpenCLIP/regional cosine similarity to improve separation.
-    Maps:
-      - [0.0, 0.65] -> [0.0, 0.30] (factor of 0.4615)
-      - [0.65, 0.80] -> [0.30, 0.80] (linear interpolation)
-      - [0.80, 1.00] -> [0.80, 1.00] (identity)
-    """
+    """Smooth sigmoid calibration — no discontinuities, preserves rank order."""
     if sim <= 0.0:
         return 0.0
-    if sim <= 0.65:
-        return float(sim * (0.30 / 0.65))
-    if sim >= 0.80:
-        return float(min(1.0, sim))
-    return float(0.30 + (sim - 0.65) * (0.50 / 0.15))
+    if sim >= 1.0:
+        return 1.0
+    # Sigmoid centered at 0.72 (typical genuine/counterfeit boundary)
+    # steepness=12 gives good separation without cliff effects
+    import math
+    center, steepness = 0.72, 12.0
+    return float(1.0 / (1.0 + math.exp(-steepness * (sim - center))))
 
 
 def _load_reference_bytes(ref_img: dict) -> Optional[bytes]:
@@ -286,12 +278,10 @@ def _global_similarity_for_slot(
     sorted_sims = sorted(sims, reverse=True)
     if len(sorted_sims) == 0:
         best_sim = 0.0
-    elif len(sorted_sims) == 1:
-        best_sim = sorted_sims[0]
-    elif len(sorted_sims) == 2:
-        best_sim = 0.70 * sorted_sims[0] + 0.30 * sorted_sims[1]
     else:
-        best_sim = 0.60 * sorted_sims[0] + 0.30 * sorted_sims[1] + 0.10 * sorted_sims[2]
+        # Use only the best match to avoid diluting the true match signal
+        # with similarities from incorrect reference views (e.g. back vs front)
+        best_sim = sorted_sims[0]
         
     best_sim = float(best_sim)
     logger.info(f"[_global_similarity_for_slot] Selected best similarity: {best_sim}")
@@ -308,7 +298,7 @@ def _patch_similarity_for_slot(
     for ref in matched_refs:
         ref_patches = _load_reference_patches(ref)
         if ref_patches:
-            best = max(best, max_patch_similarity(customer_patches, ref_patches, cosine_similarity))
+            best = max(best, structured_patch_similarity(customer_patches, ref_patches, cosine_similarity))
     return float(best)
 
 
@@ -467,6 +457,48 @@ def score_slot(
 ) -> Dict[str, Any]:
     """Score one customer slot (v6: dimension + feature matching + RANSAC + OCR product fields)."""
     matched_refs, used_fallback = filter_references_for_slot(cached_images, slot, model_sig)
+    
+    if used_fallback:
+        logger.warning(f"[Verify] Skipping slot={slot} because no matching reference view exists in DB.")
+        return {
+            "slot": slot,
+            "slot_score": 0.0,
+            "global_similarity": 0.0,
+            "aligned_clip_similarity": None,
+            "align_roi_similarity": None,
+            "alignment": {"success": False, "message": "skipped_due_to_fallback"},
+            "region_pixel_scores": {},
+            "fraud_penalty_applied": False,
+            "fraud_penalty": 0.0,
+            "regional_similarity": None,
+            "region_scores": None,
+            "patch_similarity": None,
+            "patch_stats": None,
+            "visual_similarity": 0.0,
+            "ocr_similarity": None,
+            "ocr_engine": "none",
+            "ocr_fields": None,
+            "score_breakdown": {},
+            "ensemble_meta": {"active_components": [], "weight_normalization_applied": False},
+            "dimension_similarity": None,
+            "dimension_metadata": {},
+            "feature_match_result": {"success": False, "message": "skipped_due_to_fallback"},
+            "best_reference_id": None,
+            "max_similarity": 0.0,
+            "min_similarity": 0.0,
+            "num_comparisons": 0,
+            "matched_view_types": [],
+            "per_reference_similarities": [],
+            "used_fallback": True,
+            "scoring_method": "skipped_due_to_fallback",
+            "patch_regions_customer": 0,
+            "yolo_regions_customer": 0,
+            "yolo_meta": None,
+            "vlm_applied": False,
+            "vlm_verdict": "none",
+            "vlm_result": None,
+        }
+
     use_patch = slot in PATCH_ENABLED_SLOTS
     use_regional = YOLO_ENABLED and bool(image_bytes)
 
@@ -625,7 +657,19 @@ def score_slot(
         regional_sim,
         use_regional and regional_sim > 0,
     )
+    
+    # Phase 2 Fixes: Blend RANSAC score if reliable
+    if feature_match_score is not None and ransac_score is not None:
+        if feature_match_result.get("success") and feature_match_result.get("inliers", 0) >= 8:
+            ransac_blend_weight = 0.15
+            visual_score = (1.0 - ransac_blend_weight) * visual_score + ransac_blend_weight * ransac_score
+
     slot_score = float(min(1.0, max(0.0, visual_score)))
+    
+    # Phase 2 Fixes: Apply soft penalty for aspect ratio mismatch
+    if dimension_sim is not None and dimension_sim < 0.75:
+        dim_penalty = (0.75 - dimension_sim) * 0.15
+        slot_score = max(0.0, slot_score - dim_penalty)
     fraud_penalty_applied = False
     fraud_penalty = 0.0
     clip_breakdown = {
@@ -749,251 +793,6 @@ def _slot_display_name(slot: str) -> str:
     )
 
 
-# ── VLM stage helpers (v7) ───────────────────────────────────────────────────
-_VLM_REFERENCE_VIEW_PRIORITY = (
-    "front", "front_view", "back", "back_view", "labels", "holograms",
-    "seals", "barcode_qr", "packaging", "side", "side_view",
-)
-
-
-def _vlm_priority_index(view_type: str) -> int:
-    try:
-        return _VLM_REFERENCE_VIEW_PRIORITY.index(view_type)
-    except ValueError:
-        return len(_VLM_REFERENCE_VIEW_PRIORITY)
-
-
-def _collect_vlm_customer_images(
-    customer_embeddings: List[Dict[str, Any]],
-) -> List[Dict[str, Any]]:
-    out: List[Dict[str, Any]] = []
-    for cust in customer_embeddings:
-        b = cust.get("image_bytes")
-        if not b:
-            continue
-        out.append({"view": canonical_customer_slot(cust.get("image_type", "")), "bytes": b})
-    return out
-
-
-def _collect_vlm_reference_images(
-    cached_images: List[dict],
-    slot_results: Dict[str, Dict[str, Any]],
-    num_customer_images: int,
-    max_total_refs: Optional[int] = None,
-) -> List[Dict[str, Any]]:
-    """Pick the reference views to show the VLM: the CLIP-chosen best ref per slot,
-    then broad view coverage (front/back/label + security views), bounded so the
-    total image count stays within the server's per-prompt limit.
-
-    max_total_refs, when set, further caps the reference count — used when a
-    pre-built authentication profile already describes the genuine product, so a
-    couple of grounding images suffice (fewer image tokens ⇒ faster scans)."""
-    cap = max(1, vlm_config.VLM_MAX_IMAGES - max(0, num_customer_images))
-    if max_total_refs is not None:
-        cap = max(1, min(cap, int(max_total_refs)))
-    by_id = {img.get("id"): img for img in cached_images if img.get("id")}
-
-    ordered_ids: List[Any] = []
-    # 1) Best reference per slot (already CLIP-matched).
-    for res in slot_results.values():
-        rid = res.get("best_reference_id")
-        if rid and rid in by_id and rid not in ordered_ids:
-            ordered_ids.append(rid)
-
-    # 2) Coverage by view priority (ensures security views are shown).
-    remaining = [
-        img for img in cached_images if img.get("id") and img.get("id") not in ordered_ids
-    ]
-    remaining.sort(key=lambda im: _vlm_priority_index(normalize_view_type(im.get("view_type"))))
-    per_view: Dict[str, int] = {}
-    for img in ordered_ids:
-        vt = normalize_view_type(by_id[img].get("view_type"))
-        per_view[vt] = per_view.get(vt, 0) + 1
-    for img in remaining:
-        if len(ordered_ids) >= cap:
-            break
-        vt = normalize_view_type(img.get("view_type"))
-        if per_view.get(vt, 0) >= vlm_config.VLM_MAX_REFS_PER_VIEW:
-            continue
-        ordered_ids.append(img.get("id"))
-        per_view[vt] = per_view.get(vt, 0) + 1
-
-    out: List[Dict[str, Any]] = []
-    for iid in ordered_ids[:cap]:
-        img = by_id.get(iid)
-        if not img:
-            continue
-        b = _load_reference_bytes(img)
-        if not b:
-            continue
-        out.append({"view": img.get("view_type") or "reference", "bytes": b})
-    return out
-
-
-def _build_vlm_report(
-    vlm: Optional[Dict[str, Any]],
-    decision: Dict[str, Any],
-    clip_best: float,
-    skipped: Optional[str] = None,
-) -> Dict[str, Any]:
-    vlm = vlm or {}
-    return {
-        "available": bool(vlm.get("available")),
-        "method": vlm.get("method", "skipped" if skipped else "unavailable"),
-        "verdict": vlm.get("verdict") or decision.get("vlm_verdict") or "unknown",
-        "authenticity_probability": vlm.get("authenticity_probability"),
-        "attribute_checks": vlm.get("attribute_checks", {}),
-        "defects": vlm.get("defects", []),
-        "metadata_consistency": vlm.get("metadata_consistency", []),
-        "explanation": decision.get("explanation") or vlm.get("explanation", ""),
-        "decision_source": decision.get("verdict_source"),
-        "veto_applied": decision.get("veto_applied", False),
-        "veto_reasons": decision.get("veto_reasons", []),
-        "defect_counts": decision.get("defect_counts", {}),
-        "metadata_mismatches": decision.get("metadata_mismatches", []),
-        "final_score": decision.get("final_score"),
-        "clip_best_similarity": round(float(clip_best), 4),
-        "skipped_reason": skipped,
-        "config": vlm_config.vlm_config_snapshot(),
-        "error": vlm.get("error"),
-    }
-
-
-def _slot_is_identical(slot_result: Dict[str, Any]) -> bool:
-    """True when this slot's customer image is pixel-identical to its reference.
-
-    Demands agreement from three INDEPENDENT signals — semantic (CLIP embedding),
-    geometric (ORB/RANSAC homography) and pixel-structural (per-region SSIM) — so
-    no single metric can carry the decision on its own.
-    """
-    if not isinstance(slot_result, dict):
-        return False
-
-    if float(slot_result.get("global_similarity") or 0.0) < vlm_config.IDENTITY_MIN_GLOBAL:
-        return False
-
-    fm = slot_result.get("feature_match_result") or {}
-    if not fm.get("success"):
-        return False
-    if float(fm.get("ransac_score") or 0.0) < vlm_config.IDENTITY_MIN_RANSAC:
-        return False
-    if float(fm.get("match_ratio") or 0.0) < vlm_config.IDENTITY_MIN_RANSAC:
-        return False
-
-    # Pixel-level structural agreement on EVERY measured region (min, not mean —
-    # one tampered region must be able to veto the whole slot).
-    region_scores = slot_result.get("region_pixel_scores") or {}
-    ssims = [
-        float(v.get("ssim"))
-        for v in region_scores.values()
-        if isinstance(v, dict) and v.get("ssim") is not None
-    ]
-    if not ssims:
-        return False  # no pixel evidence at all → cannot claim identity
-    return min(ssims) >= vlm_config.IDENTITY_MIN_SSIM
-
-
-def _identity_matched_slots(
-    slot_results: Dict[str, Dict[str, Any]]
-) -> Optional[List[str]]:
-    """Slots proven pixel-identical, or None if the fast path must NOT be taken.
-
-    Fails closed: if any slot that carries comparable evidence is not identical,
-    returns None so the VLM still adjudicates. A partial match (genuine front,
-    counterfeit back) must never short-circuit to authentic.
-    """
-    if not vlm_config.IDENTITY_SHORTCIRCUIT_ENABLED or not slot_results:
-        return None
-
-    identical: List[str] = []
-    for slot, result in slot_results.items():
-        if not isinstance(result, dict):
-            return None
-        fm = result.get("feature_match_result") or {}
-        has_evidence = bool(fm.get("success")) or bool(result.get("region_pixel_scores"))
-        if not has_evidence:
-            continue  # slot was not uploaded / not comparable — ignore it
-        if not _slot_is_identical(result):
-            return None
-        identical.append(slot)
-
-    if len(identical) < vlm_config.IDENTITY_MIN_SLOTS:
-        return None
-    return identical
-
-
-def _run_vlm_stage(
-    customer_embeddings: List[Dict[str, Any]],
-    cached_images: List[dict],
-    slot_results: Dict[str, Dict[str, Any]],
-    product: Optional[dict],
-    thresholds: Dict[str, float],
-    clip_best: float,
-) -> Tuple[Dict[str, Any], Dict[str, Any]]:
-    """Holistic VLM adjudication → (decision, vlm_report)."""
-    if not vlm_config.VLM_ENABLED:
-        decision = vlm_decision.decide_unavailable("vlm_disabled", clip_best)
-        return decision, _build_vlm_report(None, decision, clip_best, skipped="vlm_disabled")
-
-    # CLIP gross-mismatch pre-filter: clearly a different product → skip the VLM.
-    if clip_best < vlm_config.CLIP_GROSS_MISMATCH_MIN:
-        logger.info(
-            "[VLM] Gross mismatch (clip_best=%.3f < %.3f) — skipping VLM, marking suspicious",
-            clip_best, vlm_config.CLIP_GROSS_MISMATCH_MIN,
-        )
-        decision = vlm_decision.decide_gross_mismatch(clip_best)
-        return decision, _build_vlm_report(None, decision, clip_best, skipped="clip_gross_mismatch")
-
-    # Identity short-circuit — the mirror image of the gross-mismatch filter above.
-    # If every scored slot is pixel-identical to its reference, CLIP + ORB/RANSAC +
-    # SSIM have already settled the question; sending it to a 7B VLM can only add a
-    # chance to hallucinate a defect on an image that provably matches.
-    identity_slots = _identity_matched_slots(slot_results)
-    if identity_slots:
-        logger.info(
-            "[VLM] Identity match on %d slot(s) %s (CLIP≥%.2f, RANSAC≥%.2f, SSIM≥%.2f) "
-            "— skipping VLM, marking authentic",
-            len(identity_slots), identity_slots,
-            vlm_config.IDENTITY_MIN_GLOBAL, vlm_config.IDENTITY_MIN_RANSAC,
-            vlm_config.IDENTITY_MIN_SSIM,
-        )
-        decision = vlm_decision.decide_identity_match(clip_best, identity_slots)
-        return decision, _build_vlm_report(None, decision, clip_best, skipped="identity_match")
-
-    customer_images = _collect_vlm_customer_images(customer_embeddings)
-
-    # If a pre-built authentication profile exists, the genuine product is already
-    # richly characterised in the prompt (see qwen_vl_service._ground_truth_block),
-    # so we only need a few grounding reference images instead of full coverage —
-    # fewer image tokens ⇒ faster, cheaper scans.
-    _prof = (product or {}).get("authentication_profile") or {}
-    profile_ready = _prof.get("status") == "ready" and bool(str(_prof.get("spec", "")).strip())
-    max_refs = max(1, len(customer_images)) if profile_ready else None
-
-    reference_images = _collect_vlm_reference_images(
-        cached_images, slot_results, len(customer_images), max_total_refs=max_refs
-    )
-    logger.info(
-        "[VLM] Adjudicating with %d customer image(s) + %d reference view(s) (profile=%s)",
-        len(customer_images), len(reference_images), "ready" if profile_ready else "none",
-    )
-
-    try:
-        # Self-consistency voting (audit 1.5): N runs aggregated conservatively.
-        # N defaults to AUTHENTIQ_VLM_SELF_CONSISTENCY_N; N=1 is the single pass.
-        vlm = verify_product_authenticity_voting(customer_images, reference_images, product)
-    except Exception as exc:  # never let the VLM crash the scan
-        logger.warning("[VLM] verify_product_authenticity_voting raised: %s", exc, exc_info=True)
-        decision = vlm_decision.decide_unavailable(f"vlm_exception:{exc}", clip_best)
-        return decision, _build_vlm_report(None, decision, clip_best)
-
-    if vlm.get("available"):
-        decision = vlm_decision.decide_from_vlm(vlm, thresholds)
-    else:
-        decision = vlm_decision.decide_unavailable(vlm.get("error") or "vlm_unavailable", clip_best)
-    report = _build_vlm_report(vlm, decision, clip_best)
-    report["profile_used"] = profile_ready
-    return decision, report
 
 
 def run_verification_scoring(
@@ -1142,20 +941,41 @@ def run_verification_scoring(
         (float(slot_results[s].get("global_similarity") or 0.0) for s in slot_results),
         default=0.0,
     )
-    identity_boost_applied = False  # removed in v7 (it forced optimistic scores)
+    
+    identity_boost_applied = False
+    boost_min = float(os.getenv("AUTHENTIQ_IDENTITY_BOOST_MIN_GLOBAL", "0.97"))
+    boost_target = float(os.getenv("AUTHENTIQ_IDENTITY_BOOST_TARGET", "0.96"))
+    
+    if os.getenv("AUTHENTIQ_IDENTITY_BOOST", "true").lower() in ("true", "1") and clip_best >= boost_min:
+        clip_retrieval_aggregate = max(clip_retrieval_aggregate, boost_target)
+        identity_boost_applied = True
 
-    # ── VLM-PRIMARY DECISION ──────────────────────────────────────────────────
-    decision, vlm_report = _run_vlm_stage(
-        customer_embeddings, cached_images, slot_results, product, thresholds, clip_best
-    )
-    aggregate_confidence = float(decision["final_score"])
+    # ── ENSEMBLE DECISION ─────────────────────────────────────────────────────
+    aggregate_confidence = clip_retrieval_aggregate
+    
+    status = "needs_review"
+    risk_level = "medium"
+    if aggregate_confidence >= thresholds.get("authentic", 0.90):
+        status = "authentic"
+        risk_level = "low"
+    elif aggregate_confidence >= thresholds.get("likely_authentic", 0.80):
+        status = "likely_authentic"
+        risk_level = "low"
+    elif aggregate_confidence >= thresholds.get("needs_review", 0.65):
+        status = "needs_review"
+        risk_level = "medium"
+    else:
+        status = "suspicious"
+        risk_level = "high"
+
     authenticity = {
-        "status": decision["status"],
-        "risk_level": decision["risk_level"],
+        "status": status,
+        "risk_level": risk_level,
         "verification_strength": verification_strength_label(aggregate_confidence),
-        "explanation": decision["explanation"],
+        "explanation": "Authenticity decided based on visual similarity ensemble.",
         "confidence_score": aggregate_confidence,
     }
+    vlm_report = {}
 
     elapsed_ms = (time.perf_counter() - t0) * 1000
 
@@ -1187,14 +1007,7 @@ def run_verification_scoring(
         "weighted_score": round(aggregate_confidence, 4),
         "clip_retrieval_aggregate": round(clip_retrieval_aggregate, 4),
         "clip_best_similarity": round(clip_best, 4),
-        "vlm": {
-            "available": vlm_report.get("available"),
-            "method": vlm_report.get("method"),
-            "verdict": vlm_report.get("verdict"),
-            "decision_source": vlm_report.get("decision_source"),
-            "veto_applied": vlm_report.get("veto_applied"),
-            "defect_counts": vlm_report.get("defect_counts"),
-        },
+
         "slot_scores": {s: round(slot_results[s]["slot_score"], 4) for s in slot_results},
         "global_similarities": {
             s: round(slot_results[s].get("global_similarity") or 0.0, 4) for s in slot_results

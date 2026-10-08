@@ -233,6 +233,19 @@ async def get_products(
     )
 
     product_ids = [p["id"] for p in products if p.get("id")]
+
+    # Calculate scan counts
+    from app.core.db import qr_codes_collection
+    scan_counts = {}
+    if product_ids:
+        pipeline = [
+            {"$match": {"product_id": {"$in": product_ids}}},
+            {"$group": {"_id": "$product_id", "total_scans": {"$sum": "$scan_count"}}}
+        ]
+        results = list(qr_codes_collection.aggregate(pipeline))
+        for res in results:
+            scan_counts[res["_id"]] = res["total_scans"]
+
     vendor_ids = list({p.get("vendor_id") for p in products if p.get("vendor_id")})
     company_qr_map = {}
     if vendor_ids:
@@ -244,6 +257,7 @@ async def get_products(
     # Enrich each product with QR details for registry table
     for p in products:
         p["batch_count"] = 0
+        p["scan_count"] = scan_counts.get(p["id"], 0)
 
         company_qr = company_qr_map.get(p.get("vendor_id"))
         p["qrCode"] = company_qr.get("id") if company_qr else None
@@ -254,6 +268,9 @@ async def get_products(
         )
         p["qrGenerated"] = bool(company_qr)
         p["generatedAt"] = company_qr.get("created_at") if company_qr else None
+
+        summary = summarize_embeddings(p.get("reference_images", []))
+        p.update(summary)
 
     return {
         "products": products,
@@ -280,6 +297,17 @@ async def get_product(request: Request, product_id: str, current_user: dict = De
             raise HTTPException(status_code=403, detail="Access denied")
 
     product["batches"] = []
+
+    from app.core.db import qr_codes_collection
+    pipeline = [
+        {"$match": {"product_id": product_id}},
+        {"$group": {"_id": "$product_id", "total_scans": {"$sum": "$scan_count"}}}
+    ]
+    res = list(qr_codes_collection.aggregate(pipeline))
+    product["scan_count"] = res[0]["total_scans"] if res else 0
+
+    summary = summarize_embeddings(product.get("reference_images", []))
+    product.update(summary)
 
     return product
 
@@ -630,11 +658,17 @@ async def delete_reference_image(
             except Exception:
                 pass
 
+    new_images = [img for img in images if img.get("id") != image_id]
+    summary = summarize_embeddings(new_images)
+
     products_collection.update_one(
         {"id": product_id},
         {
             "$pull": {"reference_images": {"id": image_id}},
-            "$set": {"updated_at": datetime.utcnow()}
+            "$set": {
+                "updated_at": datetime.utcnow(),
+                **summary
+            }
         }
     )
 

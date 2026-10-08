@@ -439,6 +439,10 @@ def cosine_similarity(embedding1: List[float], embedding2: List[float]) -> float
     """
     Compute cosine similarity between two embeddings.
 
+    Optimized: uses np.asarray() to avoid copies when inputs are already numpy
+    arrays, and since embeddings are L2-normalized at generation time (see
+    generate_embedding_from_bytes), the dot product equals cosine similarity.
+
     Args:
         embedding1: First embedding vector
         embedding2: Second embedding vector
@@ -447,12 +451,21 @@ def cosine_similarity(embedding1: List[float], embedding2: List[float]) -> float
         Cosine similarity score (0.0 to 1.0)
     """
     try:
-        emb1 = np.array(embedding1, dtype=np.float32)
-        emb2 = np.array(embedding2, dtype=np.float32)
+        emb1 = np.asarray(embedding1, dtype=np.float32)
+        emb2 = np.asarray(embedding2, dtype=np.float32)
 
-        similarity = np.dot(emb1, emb2) / (
-            np.linalg.norm(emb1) * np.linalg.norm(emb2) + 1e-8
-        )
+        # Embeddings are L2-normalized at generation time, so dot ≈ cosine.
+        # We still guard against un-normalized vectors with the denominator.
+        norm1 = np.linalg.norm(emb1)
+        norm2 = np.linalg.norm(emb2)
+        if norm1 < 1e-8 or norm2 < 1e-8:
+            return 0.0
+
+        # Fast path: if both are unit-length (within tolerance), skip division
+        if abs(norm1 - 1.0) < 0.01 and abs(norm2 - 1.0) < 0.01:
+            similarity = np.dot(emb1, emb2)
+        else:
+            similarity = np.dot(emb1, emb2) / (norm1 * norm2)
 
         return float(np.clip(similarity, 0.0, 1.0))
 

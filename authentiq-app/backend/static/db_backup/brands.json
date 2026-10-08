@@ -70,5 +70,29 @@
       "__type__": "objectid",
       "value": "6a6441a9e3ae8e82c2069a06"
     }
+  },
+  {
+    "id": "cff319b8-27d3-4106-92a2-87632425b905",
+    "vendor_id": "85bd7b90-f201-422e-97a9-4d10a04eb18e",
+    "brand_name": "abc",
+    "brand_display_name": "abc",
+    "brand_logo_url": "/static/brand_logos/85bd7b90-f201-422e-97a9-4d10a04eb18e/cff319b8-27d3-4106-92a2-87632425b905/logo_683d2a10-6d25-435b-8393-c1dc54d96794.jpg",
+    "brand_tagline": null,
+    "product_categories": [
+      "Personal Care"
+    ],
+    "status": "active",
+    "created_at": {
+      "__type__": "datetime",
+      "value": "2026-09-14T13:22:40.509000"
+    },
+    "updated_at": {
+      "__type__": "datetime",
+      "value": "2026-09-14T13:22:40.547000"
+    },
+    "_id": {
+      "__type__": "objectid",
+      "value": "6aa7f52082566a7ccf4bbd9c"
+    }
   }
 ]

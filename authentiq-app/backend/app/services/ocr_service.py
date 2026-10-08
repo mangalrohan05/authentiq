@@ -304,20 +304,25 @@ def _sliding_window_fuzzy(haystack: str, needle: str) -> float:
     h = len(haystack)
     if n >= h:
         return float(SequenceMatcher(None, haystack, needle).ratio())
+        
+    # Use rapidfuzz if available (10-100x faster), else SequenceMatcher
+    try:
+        from rapidfuzz.fuzz import partial_ratio
+        return partial_ratio(needle, haystack) / 100.0
+    except ImportError:
+        pass
+        
     best = 0.0
-    # Step by half needle length for speed
-    step = max(1, n // 2)
+    # Step of 1 for short needles, n//3 for longer ones (better coverage than n//2)
+    step = max(1, n // 3)
     for i in range(0, h - n + 1, step):
-        window = haystack[i: i + n]
-        ratio = SequenceMatcher(None, window, needle).ratio()
-        if ratio > best:
-            best = ratio
-        if best >= 1.0:
+        ratio = SequenceMatcher(None, haystack[i:i+n], needle).ratio()
+        best = max(best, ratio)
+        if best >= 0.95:
             break
-    # Always check last window
-    last_window = haystack[h - n:]
-    ratio = SequenceMatcher(None, last_window, needle).ratio()
-    best = max(best, ratio)
+    # Check boundaries
+    for i in [0, max(0, h - n)]:
+        best = max(best, SequenceMatcher(None, haystack[i:i+n], needle).ratio())
     return float(best)
 
 
@@ -340,7 +345,13 @@ def _run_ocr_on_pil(image) -> str:
         import numpy as np
 
         if _easyocr_reader is None:
-            _easyocr_reader = easyocr.Reader(["en"], gpu=False, verbose=False)
+            # Use GPU when available for 5-10x speedup over CPU-only
+            try:
+                import torch as _torch
+                _ocr_gpu = _torch.cuda.is_available()
+            except ImportError:
+                _ocr_gpu = False
+            _easyocr_reader = easyocr.Reader(["en"], gpu=_ocr_gpu, verbose=False)
 
         results = _easyocr_reader.readtext(np.array(image))
         # results: list of ([bbox], text, confidence)
