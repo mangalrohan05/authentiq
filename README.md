@@ -1,94 +1,88 @@
-# QR-Authentiq — Anti-Counterfeit Product Authentication Platform
+# QR-Authentiq 🔐
 
-> **Scan. Verify. Trust.** — A full-stack QR code–based product authentication system powered by a multi-stage AI pipeline (DINOv2 + YOLOv8 + EasyOCR) that detects counterfeit goods at consumer scan time.
+> **Scan. Verify. Trust.** — Anti-counterfeit product authentication powered by a multi-stage AI pipeline (DINOv2 + YOLOv8 + EasyOCR). Consumers scan a QR code; the system returns an authenticity verdict in seconds.
 
----
+[![FastAPI](https://img.shields.io/badge/FastAPI-Python-green?logo=fastapi)](https://fastapi.tiangolo.com)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org)
+[![YOLOv8](https://img.shields.io/badge/YOLOv8-Detection-purple)](https://ultralytics.com)
 
-## 📑 Documentation Index
+## What It Does
 
-| Document | Description |
-|---|---|
-| [PROJECT_SCOPE.md](./docs/PROJECT_SCOPE.md) | Project purpose, business goals, and system architecture |
-| [TECH_STACK.md](./docs/TECH_STACK.md) | Full technology stack and dependency breakdown |
-| [AI_MODEL.md](./docs/AI_MODEL.md) | AI/ML pipeline — DINOv2, YOLOv8, EasyOCR, scoring |
-| [PORTAL_GUIDE.md](./docs/PORTAL_GUIDE.md) | Admin & Vendor portal walkthroughs and feature map |
-| [INITIAL_SETUP.md](./docs/INITIAL_SETUP.md) | Installation, environment configuration, and first-run |
-| [QUICK_START.md](./docs/QUICK_START.md) | Commands to get up and running in minutes |
-| [DEPLOYMENT.md](./docs/DEPLOYMENT.md) | Deployment strategy (dev, staging, production) |
-| [TESTING_GUIDE.md](./docs/TESTING_GUIDE.md) | Test suite, coverage, and testing workflows |
-| [API_REFERENCE.md](./docs/API_REFERENCE.md) | REST API endpoint reference |
-
----
-
-## 🔑 What Is QR-Authentiq?
-
-QR-Authentiq enables product vendors to embed cryptographically unique QR codes on their physical goods. When a consumer scans the code, they upload a photo of the product through a public web page. The system's AI pipeline compares the photo against registered reference images and returns one of four verdicts:
+Product vendors embed cryptographically unique QR codes on their goods. When a consumer scans, they upload a photo through a public web page. The AI pipeline compares the photo against registered reference images and returns one of four verdicts:
 
 | Verdict | Score | Meaning |
 |---|---|---|
-| `highly_authentic` | ≥ 0.90 | Product matches all registered references |
-| `likely_authentic` | ≥ 0.80 | Strong match, minor deviation |
-| `needs_review` | ≥ 0.65 | Inconclusive — routed to human review |
-| `suspicious` | < 0.65 | Likely counterfeit — consumer alerted |
+| highly_authentic | >= 0.90 | Matches all references |
+| likely_authentic | >= 0.80 | Strong match, minor deviation |
+| needs_review | >= 0.65 | Routed to human review |
+| suspicious | < 0.65 | Likely counterfeit |
 
----
-
-## 🏗️ Repository Structure
+## AI Pipeline
 
 ```
-QR-Authentiq/MAIN/
-├── docs/                        # ← All project documentation (this folder)
+Consumer photo upload
+       │
+       ▼
+  YOLOv8 Detection ──── detects product region
+       │
+       ▼
+  DINOv2 Embeddings ─── visual similarity vs. reference images
+       │
+       ▼
+  EasyOCR ──────────── label/text verification
+       │
+       ▼
+  Scoring Engine ─────── weighted verdict (confidence score 0-1)
+```
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| AI Detection | YOLOv8 (Ultralytics) |
+| AI Embeddings | DINOv2 (Facebook) |
+| AI OCR | EasyOCR |
+| Backend | FastAPI + Python + Celery |
+| Frontend | Next.js 16 + React 19 + TypeScript |
+| Auth | JWT (admin/vendor portals) |
+| Tests | pytest (21-file suite) |
+
+## Repository Structure
+
+```
+authentiq/
+├── docs/                   # Full documentation
 ├── authentiq-app/
-│   ├── backend/                 # FastAPI + Python AI backend
-│   │   ├── app/
-│   │   │   ├── core/            # DB, auth, rate limiting, Celery, WebSocket
-│   │   │   ├── routes/          # REST API route handlers (14 modules)
-│   │   │   ├── services/        # AI pipeline, OCR, embeddings, scoring
-│   │   │   ├── schemas/         # Pydantic request/response models
-│   │   │   └── tasks/           # Async Celery embedding tasks
-│   │   ├── tests/               # 21-file pytest suite
-│   │   ├── static/              # Uploaded images, QR codes, brand logos
-│   │   └── requirements.txt
-│   ├── frontend/                # Next.js 16 + React 19 + TypeScript
-│   │   └── src/
-│   │       ├── app/
-│   │       │   ├── admin/       # Admin portal (single-page dashboard)
-│   │       │   ├── vendor/      # Vendor portal (products, QRs, analytics)
-│   │       │   └── verify/[qrId]/ # Public consumer scan & verify page
-│   │       ├── components/      # Shared UI components
-│   │       ├── contexts/        # React context providers
-│   │       ├── hooks/           # Custom React hooks
-│   │       ├── lib/             # API base URL utilities
-│   │       └── services/        # Frontend API service layer
-│   ├── ai-service/              # AI service module (Python)
-│   └── docs/                    # Supplementary app-level docs
-└── website/                     # Marketing/landing site (PHP + Tailwind)
+│   ├── backend/            # FastAPI AI backend (14 route modules)
+│   │   ├── app/routes/     # REST API handlers
+│   │   ├── app/services/   # AI pipeline, OCR, embeddings, scoring
+│   │   └── tests/          # pytest suite
+│   └── frontend/           # Next.js admin + vendor + consumer scan portals
+└── website/                # Marketing landing page
 ```
 
----
+## Documentation
 
-## ⚡ 60-Second Quick Start
+| Doc | Description |
+|---|---|
+| [PROJECT_SCOPE.md](./docs/PROJECT_SCOPE.md) | Architecture & goals |
+| [AI_MODEL.md](./docs/AI_MODEL.md) | Full AI pipeline details |
+| [API_REFERENCE.md](./docs/API_REFERENCE.md) | REST API reference |
+| [QUICK_START.md](./docs/QUICK_START.md) | Up and running in minutes |
+| [TESTING_GUIDE.md](./docs/TESTING_GUIDE.md) | Test suite & coverage |
+
+## Quick Start
 
 ```bash
-# 1. Clone and enter the project
-git clone <repo-url> && cd QR-Authentiq/MAIN
-
-# 2. Start the backend
+# Backend
 cd authentiq-app/backend
-python -m venv venv && venv\Scripts\activate     # Windows
 pip install -r requirements.txt
-copy .env.example .env                           # Edit as needed
+copy .env.example .env
 uvicorn app.main:app --reload --port 8000
 
-# 3. Start the frontend (new terminal)
+# Frontend (new terminal)
 cd authentiq-app/frontend
 npm install && npm run dev
 ```
 
-Frontend → http://localhost:3000  
-Backend API → http://localhost:8000  
-API Docs → http://localhost:8000/docs
-
----
-
-*See [INITIAL_SETUP.md](./docs/INITIAL_SETUP.md) for the complete installation guide.*
+Frontend -> http://localhost:3000 | API -> http://localhost:8000 | Docs -> http://localhost:8000/docs
